@@ -34,7 +34,6 @@ jobs:
           flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Run unit tests with nose
-        working-directory: .
         run: |
           set -e
 
