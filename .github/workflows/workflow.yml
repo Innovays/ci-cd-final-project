@@ -33,12 +33,14 @@ jobs:
           flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Run unit tests with nose
-        working-directory: .
         run: |
-          set -e
+          pip install nose coverage
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
 
       - name: Run Tests
         run: |
           pip install pytest
-          pytest
+          PYTHONPATH=${{ github.workspace }} pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}
