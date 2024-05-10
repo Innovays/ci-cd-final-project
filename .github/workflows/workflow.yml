@@ -38,10 +38,3 @@ jobs:
         run: |
           pip install nose coverage
           nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
-
-      - name: Run Tests with pytest
-        run: |
-          pip install pytest
-          PYTHONPATH=${{ github.workspace }} pytest
-        env:
-          PYTHONPATH: ${{ github.workspace }}
